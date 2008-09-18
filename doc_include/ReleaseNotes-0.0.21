@@ -1,0 +1,7 @@
+* Array#classify.
+* Module#guard_method
+  * Added the ability to create "unguard methods" for the same flag, all in one fell swoop
+  * Added the ability to use the guard and unguard methods as simply setters/clearers of the flag (no block)
+  * Added lots of documentation
+  * Added lots of test cases
+* Added toggleability feature for color (colored gem)

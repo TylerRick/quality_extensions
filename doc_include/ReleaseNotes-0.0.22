@@ -1,0 +1,2 @@
+* Changed Object#send_if to also work *without* a block
+* Added Object#send_if_true

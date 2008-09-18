@@ -1,0 +1,1 @@
+Fixed bug in difference_highlighting.rb that caused assert_nil to not work.

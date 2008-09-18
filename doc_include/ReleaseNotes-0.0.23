@@ -1,0 +1,1 @@
+* Fixed bug in the return value of Object#send_if (when used without a block)

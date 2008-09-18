@@ -1,0 +1,3 @@
+* Fixed bug that existed in Facets version of Module#attr_tester
+* Split/renamed Module#attr_tester/Module#mattr_tester into:
+  * (m)attr_reader/(m)attr_writer/(m)attr_accessor

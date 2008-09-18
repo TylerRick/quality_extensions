@@ -1,0 +1,16 @@
+= Escape
+
+[<b>Home page</b>:]        ?
+[<b>Gem install</b>:]      <tt>gem install escape</tt>
+[<b>Author</b>:]           Tanaka Akira
+[<b>Copyright</b>:]        Copyright (C) 2006,2007 Tanaka Akira  <akr@fsij.org>
+[<b>License</b>:]          Looks like the BSD license
+
+== Introduction
+
+I only turned this into a gem to make it easier for my code to specify a dependency on it. For those of us used to the ease of use afforded by gems, it's hard to ask users to download and manually install the escape library...
+
+However, it appears that escape.rb now ships standard with newer versions of Ruby, so this gem may not be needed at all any more (unless you have an old version).
+
+(It is available as /usr/lib/ruby/1.8/escape.rb, at least in my version of ruby: ruby 1.8.6 (2007-09-24 patchlevel 111) [x86_64-linux])
+

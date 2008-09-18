@@ -1,0 +1,2 @@
+* Added Symbol#match/=~
+* Added Object#send_if_not_nil

@@ -1,0 +1,3 @@
+* Added Module#malias_method_chain
+* Made String::@@colorize_enabled = true be the default, as it should be.
+* Stopped depending on gemables/template/doc/template via externals

@@ -1,0 +1,3 @@
+* alias_method_chain: Added support for blocks, like ActiveSupport's version has. In fact, copied ActiveSupport's version over.
+  * Added tests
+  * Made the other wrappers pass &block along

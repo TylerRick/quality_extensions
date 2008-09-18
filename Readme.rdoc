@@ -1,0 +1,61 @@
+= Quality Ruby Extensions
+
+[<b>Home page</b>:]        http://quality-ext.rubyforge.org/
+[<b>Project site</b>:]     http://github.com/TylerRick/quality_extensions/tree/master / http://rubyforge.org/projects/quality-ext/ 
+[<b>Gem install</b>:]      <tt>gem install quality_extensions</tt>
+[<b>Author</b>:]           Tyler Rick <github.com|tylerrick.com> and others
+[<b>License</b>:]          {Ruby License}[link:files/License.html]
+
+== Introduction
+
+QualityExtensions is a library of general-purpose, reusable methods/classes that are compatible with/built-upon Facets (2.4.4) but not (yet) included in Facets... including FileTest.binary_file?, Enumerable#enum, String#digits_only, send_if_not_nil, send_if_true, send_unless, Kernel#capture_output, Kernel#backtrace, Symbol#=~, Hash#hash_select, Hash#delete_unless, Array#expand_ranges, assert_changed, assert_contains, and many more.
+
+It is similar in purpose and layout to {Ruby Facets}[http://facets.rubyforge.org/] but not intended _compete_ with Facets.
+
+Developers are encouraged to first check if the method or class they are looking for already exists in one of the fine existing open-source projects (like {Facets}[http://facets.rubyforge.org/] or {Extensions}[http://extensions.rubyforge.org/rdoc/index.html] or {stdlib}[http://www.ruby-doc.org/stdlib/]).
+
+If the code you are needing hasn't already been written by someone else, then you can throw it in this library. Also submit it to an existing extensions project if you think it's any good.
+
+Like Facets, this library contains:
+* methods that add functionality to existing Ruby classes (String, Array, etc.)
+* as well as new classes that aren't in core Ruby
+
+== Featured methods
+
+* <tt>Regexp#+</tt>, <tt>Regexp#join</tt>
+* <tt>guard_method</tt>/<tt>mguard_method</tt>
+* ...
+
+== Installation
+
+  gem install quality_extensions -y
+
+== Usage
+
+  require 'rubygems'
+  gem 'quality_extensions'
+
+And then <b>include as much or as little as you want</b>.
+
+Use the handy <tt>all.rb</tt> files to load everything in a particular directory (and all subdirectories).
+
+To load everything:
+
+  require 'quality_extensions/all'
+
+To load everything just for one class:
+
+  require 'quality_extensions/string/all'
+
+To load just an individual method:
+
+  require 'quality_extensions/array/average'
+
+
+== Running tests
+
+Tests are self-contained within the file for the code that is under test.
+
+To run the tests directly, you need to use the <tt>exrb</tt> command that is part of the {Ratchets}[http://ratchets.rubyforge.org/] project.
+
+At some point in time, we may extract them into separate files using the Exacto test extractor tool.

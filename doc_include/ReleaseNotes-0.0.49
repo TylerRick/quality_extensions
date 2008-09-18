@@ -1,0 +1,2 @@
+Added Object#ancestry_of_method
+Added Module#ancestry_of_instance_method

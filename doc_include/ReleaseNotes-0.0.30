@@ -1,0 +1,4 @@
+test/difference_highlighting.rb:
+* Made this assert_equal compatible with assert_equal calls that pass message as arg 3
+* Made spaces appear as spaces with colored background rather than as colored underlines.
+* Expanded documentation a bit

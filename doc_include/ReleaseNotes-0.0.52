@@ -1,0 +1,1 @@
+* Renamed namespace to namespace_module so that it wouldn't conflict with Rake's namespace command :-/

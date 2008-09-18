@@ -1,0 +1,3 @@
+test/difference_highlighting.rb:
+* Made it so that the default behavior was to only use difference highlighting for long and multi-line strings.
+* Worked out some bugs with the overriding of that default.

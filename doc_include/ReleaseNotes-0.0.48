@@ -1,0 +1,2 @@
+test/assert_anything.rb:
+* Will also handle dynamic assertions like this now: assert_class_is 'foo', String

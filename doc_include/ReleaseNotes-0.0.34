@@ -1,0 +1,2 @@
+* console/command.rb:
+  * Fixed a bug in option_demethodize that caused multi-word options like --no-auth-cache to be passed through as --no-auth_cache: should be gsub, not just sub

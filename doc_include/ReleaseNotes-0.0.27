@@ -1,0 +1,1 @@
+* Changed Module#bool_attr_accessor to allow a state of nil

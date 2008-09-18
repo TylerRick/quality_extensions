@@ -1,0 +1,1 @@
+Bug fix: kernel/require_local_all.rb was pointing to the wrong file

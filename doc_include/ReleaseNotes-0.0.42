@@ -1,0 +1,2 @@
+* Renamed Module#parent to Module#namespace
+* Added String#constantize, Symbol#constantize

@@ -1,0 +1,2 @@
+* Added Module.split_name
+* Added Module.namespace_of, Module.namespace_name_of

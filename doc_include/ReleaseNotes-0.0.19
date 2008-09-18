@@ -1,0 +1,1 @@
+* Fixed a bug in guard_method: it wasn't returning the return value of the block that it yielded to

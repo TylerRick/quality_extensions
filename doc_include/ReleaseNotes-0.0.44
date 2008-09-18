@@ -1,0 +1,3 @@
+* Added Module.basename
+* Added Module.dirname alias for Module.namespace_name_of
+* Added Module.join

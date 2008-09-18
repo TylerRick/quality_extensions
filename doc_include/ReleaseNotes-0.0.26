@@ -1,0 +1,2 @@
+* Fixed embarrassing bug bool_attr_accessor.rb where I had hard-coded a symbol (mbool_attr_reader :a) rather than using mbool_attr_reader *args.
+* Changed guard_method.rb so that it used mbool_attr_accessor rather than mattr_tester (which no longer exists). Was causing it to have a gem activation error.

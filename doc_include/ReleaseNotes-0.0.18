@@ -1,0 +1,1 @@
+* Added workarounds for the broken === and grep support for using regexp with symbols

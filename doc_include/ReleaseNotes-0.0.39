@@ -1,0 +1,1 @@
+* Deprecated Kernel#remove_module and just added it straight to Module: Module#remove_const!

@@ -1,0 +1,3 @@
+* Module#guard_method:
+  * Allow the user to pass in the new value of the guard variable to the guard method rather than always assuming true
+  * Deprecated the unguard method idea because the above new feature renders it redundant.

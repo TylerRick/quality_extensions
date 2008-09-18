@@ -1,0 +1,2 @@
+* Added Module#mattr_tester
+* Added Module#(m)guard_method

@@ -1,0 +1,1 @@
+* guard_method: Made sure that we set the guard variable back to its old state *even if the block that we yield to has a return statement in it*.

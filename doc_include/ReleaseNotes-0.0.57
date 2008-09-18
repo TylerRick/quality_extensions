@@ -1,0 +1,3 @@
+* malias_method_chain
+  * Changed it to use singleton_class.instance_eval instead of class << self so that we actually had access to locals and didn't need to resort to nasty globals.
+  * Passing along any extra args (*args) now...
