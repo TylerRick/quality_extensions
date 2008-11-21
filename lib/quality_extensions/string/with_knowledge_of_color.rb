@@ -28,11 +28,13 @@ module WithKnowledgeOfColor
     #ljust(width + nonprinting_characters_used_for_color.length, padstr)
     # That didn't work when you wanted the padstr to have color (as in ' '.on_blue)
 
-    self + padstr*(width - length_without_color)
+    padding_width = [(width - length_without_color), 0].max
+    self + padstr*padding_width
   end
 
   def rjust_with_color(width, padstr=' ')
-    padstr*(width - length_without_color) + self
+    padding_width = [(width - length_without_color), 0].max
+    padstr*padding_width + self
   end
 end
 
