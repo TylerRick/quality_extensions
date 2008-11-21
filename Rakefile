@@ -9,7 +9,7 @@ module Project
   PrettyName = "QualityExtensions"
   Name       = "quality_extensions"
   RubyForgeName = "quality-ext"
-  Version    = "1.1.0" 
+  Version    = "1.1.1" 
 end
 
 specification = Gem::Specification.new do |s|
@@ -25,13 +25,13 @@ specification = Gem::Specification.new do |s|
 
   # Documentation
   s.has_rdoc = true
-  s.extra_rdoc_files = ['Readme']
+  s.extra_rdoc_files = ['Readme.rdoc']
   s.rdoc_options << '--title' << Project::Name << '--main' << 'Readme' << '--line-numbers'
 
   # Files
   s.files = FileList[
     '{lib,test,examples}/**/*.rb',
-    'Readme'
+    'Readme.rdoc'
   ].to_a
   s.test_file = "test/all.rb"
   s.require_path = "lib"
