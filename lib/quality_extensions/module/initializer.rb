@@ -2,7 +2,7 @@
 # Author::    Trans?
 # Copyright:: Copyright (c) Trans?
 # License::   Ruby License
-# Submit to Facets?:: No. Copied from facets-1.8.54/lib/facets/core/hash/assert_has_only_keys.rb. No longer exists in 2.4.1.
+# Submit to Facets?:: No. Was removed from Facets in (or before) 2.4.1, though I'm not sure why. Salvaged from facets-1.8.54/lib/facets/core/module/initializer.rb.
 # Developer notes::
 #++
 
