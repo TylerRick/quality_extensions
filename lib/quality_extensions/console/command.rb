@@ -32,7 +32,7 @@
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'shellwords'
 require 'rubygems'
-require 'facets/string/style'  #modulize
+require 'facets/string/modulize'
 require 'escape'  # http://www.a-k-r.org/escape/
 
 # TODO Test
@@ -397,7 +397,7 @@ class Console::Command
 
     # Extend subcommand option module
     #subconst = subcommand.gsub(/\W/,'_').capitalize
-    subconst = @subcommand.style(:modulize)
+    subconst = @subcommand.modulize
     #p self.class.constants if $debug
     if self.class.const_defined?(subconst)
       puts "Extending self (#{self.class}) with subcommand module #{subconst}" if $debug
