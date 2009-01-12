@@ -1,11 +1,17 @@
-# http://tfletcher.com/lib/gradiate.rb
-require 'rgb'
+#--
+# Source:     http://tfletcher.com/lib/gradiate.rb
+# Author::    Tim Fletcher
+# Copyright:: Copyright (c) 2008, Tim Fletcher
+# License::   Ruby License?
+# Submit to Facets?:: No
+# Developer notes::
+# Changes::
+#++
 
-class Numeric #:nodoc:
-  def diff(n)
-    return (self > n ? self - n : n - self)
-  end
-end
+require 'facets/kernel/require_local'
+require_local 'rgb'
+require_local '../numeric/diff'
+require_local '../enumerable/every'
 
 module Enumerable
 
@@ -42,6 +48,7 @@ module Enumerable
         next (a..b).every(c)
       else [] end
     end
+
     objects = sort_by { |object| object.send(options[:compare_using] || :to_i) }
     objects = objects.reverse if [:desc, :reverse].include?(options[:order])
     objects.zip(*ranges).collect do |object, red, green, blue|
@@ -52,21 +59,53 @@ module Enumerable
       next object
     end
   end
-
-  # Yields every nth object (if invoked with a block),
-  # or returns an array of every nth object e.g.
-  #
-  #   [1, 2, 3, 4, 5, 6].every(2)               -> [1, 3, 5]
-  #   [1, 2, 3, 4, 5, 6].every(2) { |i| ... }   -> nil
-  #
-  def every(n)
-    result = [] unless block_given?
-    each_with_index do |object, i|
-      if i % n == 0
-        block_given?? yield(object) : result << object
-      end
-    end
-    return block_given?? nil : result
-  end
   
 end
+
+#  _____         _
+# |_   _|__  ___| |_
+#   | |/ _ \/ __| __|
+#   | |  __/\__ \ |_
+#   |_|\___||___/\__|
+#
+=begin test
+require 'spec'
+Spec::Runner.options.colour = true
+ENV['AUTOTEST'] = '1'
+
+describe Enumerable.instance_method(:gradiate) do
+  class Thing < ::Struct.new(:name, :color)
+  end
+
+  it "works when gradiating from 'cc' to 'dd' for all components" do
+    results = [
+       Thing.new('d', Color::RGB.new(  0,  0,  0)),
+       Thing.new('c', Color::RGB.new(  0,  0,  0)),
+       Thing.new('b', Color::RGB.new(  0,  0,  0)),
+       Thing.new('a', Color::RGB.new(  0,  0,  0)),
+    ].gradiate :all => ['cc', 'dd'], :compare_using => :name
+
+    results.map(&:name).should == %w[a b c d]
+
+    results.map(&:color)[0].should == Color::RGB.new(0xcccccc)
+    results.map(&:color)[1].should == Color::RGB.new(0xd1d1d1)
+    results.map(&:color)[2].should == Color::RGB.new(0xd6d6d6)
+    results.map(&:color)[3].should == Color::RGB.new(0xdbdbdb)
+
+    results.map(&:color).map(&:red).enum_cons(2).map {|a,b| b-a}.map {|a| a == 5}.should be_all
+  end
+
+  it "works when gradiating from '00' to 'ff' for red component" do
+    results = [
+       Thing.new('ruby',      Color::RGB.new(255,  0,  0)),
+       Thing.new('apple',     Color::RGB.new(  0,255,  0)),
+       Thing.new('blueberry', Color::RGB.new(  0,  0,255)),
+    ].gradiate :red => ['00', 'ff'], :compare_using => :name
+
+    results.map(&:color)[0].should == Color::RGB.new(0x00ff00)
+    results.map(&:color)[1].should == Color::RGB.new(0x7f00ff)
+    results.map(&:color)[2].should == Color::RGB.new(0xfe0000)
+  end
+
+end
+=end

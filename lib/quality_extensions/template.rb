@@ -1,6 +1,6 @@
 #--
 # Author::    Tyler Rick
-# Copyright:: Copyright (c) 2008, Tyler Rick
+# Copyright:: Copyright (c) 2009, Tyler Rick
 # License::   Ruby License
 # Submit to Facets?::
 # Developer notes::
