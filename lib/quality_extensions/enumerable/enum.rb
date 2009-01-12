@@ -3,6 +3,9 @@
 # Copyright:: Copyright (c) 2007 QualitySmith, Inc.
 # License::   Ruby License
 # Submit to Facets?:: Yes!
+# Changes::
+# * 2009-01-11 (Tyler):
+#   * Changed Enumerable#enum so that it accepts any number of args and passes them on to Enumerator.new
 #++
 
 require 'enumerator'
@@ -36,8 +39,8 @@ module Enumerable
   #   "abc".enum(:each_byte).map{|byte| byte.chr.upcase}
   #   #=> ["A", "B", "C"]
   #   
-  def enum(iterator = :each)
-    Enumerable::Enumerator.new(self, iterator)
+  def enum(iterator = :each, *args)
+    Enumerable::Enumerator.new(self, iterator, *args)
   end
 
 end
@@ -49,21 +52,22 @@ end
 #   |_|\___||___/\__|
 #
 =begin test
-require 'test/unit'
+require 'spec'
+require 'facets/kernel/require_local'
+require_local 'every'
 
-class TheTest < Test::Unit::TestCase
-  def test_1
-#    @options.enum(:each).map { |key, value|
-#      values = [value].flatten
-#      key +
-#        (values.empty? ? " #{flatten.join(' ')}" : '')
-#    }.join(' ')
-
-    # Yes we could use the built-in Array#map method, but...not every class that provides iterators (each, ...) provides a map().
-    assert_equal ['A', 'B', 'C'], ['a', 'b', 'c'].enum(:each).map {|v| v.upcase}
+describe Enumerable do
+  it "enum(:each) simple case" do
+    # Yes we could use the built-in Array#map method in this case, but not every class that provides iterators (each, ...) provides a map().
+    ['a', 'b', 'c'].enum(:each).map {|v| v.upcase}.should == ['A', 'B', 'C']
   end
-  def test_2
-    assert Dir.new('.').enum.to_a.size > 0
+
+  it "using enum on a Dir object" do
+    Dir.new('.').enum.to_a.size.should > 0
+  end
+
+  it "can be used with iterator methods that require arguments" do
+    (1..6).enum(:every, 2).map(&:to_s).should == %w[1 3 5]
   end
 end
 =end
