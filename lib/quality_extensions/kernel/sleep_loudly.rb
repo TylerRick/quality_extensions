@@ -8,20 +8,26 @@ module Kernel
   #
   # Note that it produces output (or executes your block, if supplied) n+1 times, *not* n times. (This allows you to output (or not) both when the timer is first started *and* when it finishes.) But because it sleeps for 1 second after the first n iterations only and *not* after the last, the total delay is only n seconds.
   #
+  # To change the step size, supply a value for +step+ other than 1. It will sleep for this many seconds before yielding
+  #
   # Examples:
   #
   #   sleep_loudly(3, :up) 
   #     0<sleep 1>1, <sleep 1>2, <sleep 1>3
+  #
+  #   sleep_loudly(10*60, :up, 60) {|i| print i*60, ", "} # sleep for 10 minutes, outputting after every 60 seconds
+  #     0<sleep 60>2, <sleep 60>2, <sleep 60>3, 
+  #
   #   sleep_loudly(3, :up) {|i| print i}
   #     0<sleep 1>1<sleep 1>2<sleep 1>3
+  #
   #   sleep_loudly(3, :up) {|i| print i+1 unless i==3}
   #     1<sleep 1>2<sleep 1>3<sleep 1>
   #
-  #
-  def sleep_loudly(n, direction = :down)
+  def sleep_loudly(n, direction = :down, step = 1)
     old_sync, STDOUT.sync = STDOUT.sync, true
     if direction == :down
-      n.downto(0) do |i|
+      n.step(0, step > 0 ? -step : step) do |i|
         if block_given?
           yield i
         else
@@ -29,11 +35,11 @@ module Kernel
         end
         unless i==0
           print ", " unless block_given?
-          sleep 1 
+          sleep step.abs 
         end
       end
     elsif direction == :up
-      0.upto(n) do |i|
+      0.step(n, step < 0 ? -step : step) do |i|
         if block_given?
           yield i
         else
@@ -41,7 +47,7 @@ module Kernel
         end
         unless i==n
           print ", " unless block_given?
-          sleep 1 
+          sleep step.abs
         end
       end
     else
@@ -52,4 +58,6 @@ module Kernel
   end
 end
 
+#sleep_loudly(3, :up)
 #sleep_loudly(3, :up) {|i| print i+1 unless i==3}
+#sleep_loudly(5, :up, 2) {|i| print i/2, ", "}
