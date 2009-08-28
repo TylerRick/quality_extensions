@@ -8,7 +8,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'rubygems'
-require 'quality_extensions/enumerable/enum'
 
 class String
   def each_char_with_index
@@ -34,7 +33,7 @@ require 'test/unit'
 class TheTest < Test::Unit::TestCase
   def test_1
     assert_equal [[0, "a"], [1, "b"], [2, "c"]],
-                 'abc'.enum(:each_char_with_index).to_a
+                 'abc'.to_enum(:each_char_with_index).to_a
   end
 end
 =end
