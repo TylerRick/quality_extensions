@@ -38,8 +38,14 @@ module Kernel
       else
         raise ArgumentError.new("Expected a String or a FileList")
     end
-    files = files.exclude(*exclusions)                                       if (exclusions = options.delete(:exclude))
-    files = files.exclude(*exclusions.map {|a| File.exact_match_regexp(a) }) if (exclusions = options.delete(:exclude_files))
+    if (exclusions = options.delete(:exclude))
+      exclusions = [exclusions] if exclusions.is_a? String
+      files = files.exclude(*exclusions)
+    end
+    if (exclusions = options.delete(:exclude_files))
+      exclusions = [exclusions] if exclusions.is_a? String
+      files = files.exclude(*exclusions.map {|a| File.exact_match_regexp(a) })
+    end
 
     files.each do |filename|
       # puts "requiring #{filename}" if filename =~ /test/
@@ -106,12 +112,13 @@ class TheTest < Test::Unit::TestCase
     assert_equal ['moo.rb'], $loaded
 
     # But, we can still trick it!
-    $LOAD_PATH << @base_dir
-    require "moo"
-    assert_equal ['moo.rb', 'moo.rb'], $loaded
-
-    load "moo.rb"
-    assert_equal ['moo.rb', 'moo.rb', 'moo.rb'], $loaded
+    # Update: Apparently, in Ruby 1.9.1, this no longer works. moo.rb will only be required once.
+#    $LOAD_PATH << @base_dir
+#    require "moo"
+#    assert_equal ['moo.rb', 'moo.rb'], $loaded
+#
+#    load "moo.rb"
+#    assert_equal ['moo.rb', 'moo.rb', 'moo.rb'], $loaded
   end
 
   def test_deep_subdir
@@ -170,6 +177,15 @@ class TheTest < Test::Unit::TestCase
     require_all File.dirname(@base_dir), :exclude_files => ['all.rb']
 
     assert_equal ['yes.rb'], $loaded
+  end
+
+  def test_exclude_filename_string
+    create_ruby_file 'yes2.rb'
+    create_ruby_file 'all2.rb'
+
+    require_all File.dirname(@base_dir), :exclude_files => 'all2.rb'
+
+    assert_equal ['yes2.rb'], $loaded
   end
 
   #-------------------------------------------------------------------------------------------------------------------------------
