@@ -12,7 +12,9 @@
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'singleton'
 require 'rubygems'
-require 'facets/basicobject'
+require 'builder/blankslate'
+#require 'facets/basicobject'
+#puts Object.methods.include?(:blank_slate_method_added) # not there?
 
 
 class Object
@@ -50,8 +52,8 @@ end
 
 # Extending BasicObject because it provides us with a clean slate. It is similar to Object except it has almost all the standard methods stripped away so that
 # we will hit method_missing for almost all method routing.
-class SafeNil < BasicObject
-  include Singleton   # I assume this is because it's faster than instantiating a new object each time.
+class SafeNil < BlankSlate
+  include ::Singleton   # I assume this is because it's faster than instantiating a new object each time.
 
   #undef inspect   # Use nil's version of inspect... although I wonder whether it would be better to have it return "SafeNil" so you know it's different than a normal nil.
   def inspect
