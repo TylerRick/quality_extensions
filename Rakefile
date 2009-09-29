@@ -9,7 +9,7 @@ module Project
   PrettyName = "QualityExtensions"
   Name       = "quality_extensions"
   RubyForgeName = "quality-ext"
-  Version    = "1.1.3" 
+  Version    = "1.1.6" 
 end
 
 specification = Gem::Specification.new do |s|
