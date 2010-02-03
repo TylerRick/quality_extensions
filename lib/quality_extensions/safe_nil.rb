@@ -1,5 +1,5 @@
 #--
-# Credits::    
+# Credits::
 # * Tom Locke (http://hobocentral.net/blog/2007/08/25/quiz/) -- original version
 # * coderrr (http://coderrr.wordpress.com/2007/09/15/the-ternary-destroyer/) -- some optimizations
 # * Tyler Rick -- packaged it, added some documention, and added some tests
@@ -18,16 +18,17 @@ require 'builder/blankslate'
 
 
 class Object
+  # not sure if receiver is nil?
   def _?
     self
   end
 end
 
 class NilClass
-  # The _? method just returns the object itself for all objects except for nil. For nil, _? will return a special version of nil (actually, an instance of 
+  # The _? method just returns the object itself for all objects except for nil. For nil, _? will return a special version of nil (actually, an instance of
   # SafeNil) that lets you call undefined methods.
   #
-  # If you call an undefined method on nil._?, you will get back nil -- rather than raising an exception, which is what would happen if you called the same 
+  # If you call an undefined method on nil._?, you will get back nil -- rather than raising an exception, which is what would happen if you called the same
   # method on a _plain_ old nil!
   #
   # _? gives us a much conciser alternative to this common pattern:
@@ -55,10 +56,12 @@ end
 class SafeNil < BlankSlate
   include ::Singleton   # I assume this is because it's faster than instantiating a new object each time.
 
-  #undef inspect   # Use nil's version of inspect... although I wonder whether it would be better to have it return "SafeNil" so you know it's different than a normal nil.
-  def inspect
-    'SafeNil'
-  end
+  undef inspect   # Use nil's version of inspect... although I wonder whether it would be better to have it return "SafeNil" so you know it's different than a normal nil.
+  #def inspect
+  #  'SafeNil'
+  #end
+
+  undef to_s
 
   def method_missing(method, *args, &block)
     return nil  unless nil.respond_to?(method)      # A much faster alternative to 'rescue nil' that can be used most of the time to speed things up.
@@ -91,6 +94,12 @@ class TheTest < Test::Unit::TestCase
     assert_equal 3,        hash[:a]._?.length
   end
 
+  def test_to_s
+    assert_equal '', nil._?.to_s
+    assert_equal '{}', {}._?.to_s
+    assert_equal '[]', []._?.to_s
+  end
+
   def test_chaining
     hash = {}
     assert_equal nil, hash[:a]._?.foo
@@ -99,7 +108,7 @@ class TheTest < Test::Unit::TestCase
   end
 
   def test_inspect
-    assert_equal 'SafeNil', nil._?.inspect
+    assert_equal 'nil', nil._?.inspect
   end
 
   def test_nil?
