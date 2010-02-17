@@ -69,6 +69,7 @@ class SafeNil < BlankSlate
   end
 
   def nil?; true; end
+  def blank?; true; end
 end
 
 
@@ -111,15 +112,23 @@ class TheTest < Test::Unit::TestCase
     assert_equal 'nil', nil._?.inspect
   end
 
-  def test_nil?
-    assert SafeNil.instance.nil?
-  end
-
   def test_does_not_permanently_modify_nil_class
     assert_raise(NoMethodError) { nil.foo }
     nil._?
     assert_raise(NoMethodError) { nil.foo }
   end
+
+  def test_nil?
+    assert SafeNil.instance.nil?
+  end
+
+  def test_blank?
+    require 'facets/blank'
+    assert nil.blank?
+    assert SafeNil.instance.blank?
+    assert ({1=>'a', 2=>'b'})[3]._?.blank?
+  end
+
 end
 =end
 
