@@ -11,7 +11,7 @@ class Array
   # Calculates the arithmetic average (mean) of the elements in the array as a <tt>Float</tt>.
   #   irb -> [1, 3, 3].average
   #       => 2.33333333333333
-  def average
+  def mean
     if self.size == 0
       raise ZeroDivisionError
     end

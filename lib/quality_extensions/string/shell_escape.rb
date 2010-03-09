@@ -43,10 +43,10 @@ class TheTest < Test::Unit::TestCase
   end
 
   # Escape has changed its behavior in newer versions. It wants to return it as type Escape::ShellEscaped.
-  def test_type
-    assert_equal Escape::ShellEscaped, 'a'.shell_escape.class
-    assert_equal 'a', 'a'.shell_escape.to_s
-  end
+#  def test_type
+#    assert_equal Escape::ShellEscaped, 'a'.shell_escape.class
+#    assert_equal 'a', 'a'.shell_escape.to_s
+#  end
 end
 =end
 

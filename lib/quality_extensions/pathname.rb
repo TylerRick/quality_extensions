@@ -4,7 +4,7 @@
 # Copyright:: Copyright (c) 2009, Tyler Rick
 # License::   Ruby License
 # Submit to Facets?::
-# Developer notes:: 
+# Developer notes::
 # * Make a patch to actual pathname source.
 # * document all Pathname methods better, copying from docs for delegated class if necessary, but NOT just saying 'See FileTest.file?.' How useless that is to have to keep flipping back and forth referring to like 4 different classes!
 # History::
@@ -16,6 +16,54 @@
 # better:
 # path.basename.change_basename {|basename| basename.capitalize} ?
 #++
+
+
+
+# TODO: How much of this stuff already exists as private methods??
+#
+#  # chop_basename(path) -> [pre-basename, basename] or nil
+#  def chop_basename(path)
+#    base = File.basename(path)
+#    if /\A#{SEPARATOR_PAT}?\z/ =~ base
+#      return nil
+#    else
+#      return path[0, path.rindex(base)], base
+#    end
+#  end
+#  private :chop_basename
+#
+#  # split_names(path) -> prefix, [name, ...]
+#  def split_names(path)
+#    names = []
+#    while r = chop_basename(path)
+#      path, basename = r
+#      names.unshift basename
+#    end
+#    return path, names
+#  end
+#  private :split_names
+#
+#  def prepend_prefix(prefix, relpath)
+#    if relpath.empty?
+#      File.dirname(prefix)
+#    elsif /#{SEPARATOR_PAT}/ =~ prefix
+#      prefix = File.dirname(prefix)
+#      prefix = File.join(prefix, "") if File.basename(prefix + 'a') != 'a'
+#      prefix + relpath
+#    else
+#      prefix + relpath
+#    end
+#  end
+#  private :prepend_prefix
+#
+
+
+
+
+
+
+
+
 
 
 require 'pathname'
@@ -71,7 +119,7 @@ class Pathname
     Pathname.new(new_path)
   end
   alias_method :move, :mv
-  
+
   # Copies self to +dest+ using FileUtils.cp.
   #
   # See documentation for FileUtils.cp for a list of valid +options+.
@@ -84,7 +132,7 @@ class Pathname
   end
   alias_method :copy, :cp
 
-  # Copies self to +dest+ using FileUtils.cp_r. If self is a directory, this method copies all its contents recursively. If +dest+ is a directory, copies self to +dest/src+. 
+  # Copies self to +dest+ using FileUtils.cp_r. If self is a directory, this method copies all its contents recursively. If +dest+ is a directory, copies self to +dest/src+.
   #
   # See documentation for FileUtils.cp_r for a list of valid +options+.
   #

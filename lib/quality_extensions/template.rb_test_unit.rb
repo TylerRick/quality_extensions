@@ -1,10 +1,10 @@
 #--
 # Author::    Tyler Rick
-# Copyright:: Copyright (c) 2010, Tyler Rick
+# Copyright:: Copyright (c) 2009, Tyler Rick
 # License::   Ruby License
 # Submit to Facets?::
 # Developer notes::
-# History::
+# Changes::
 #++
 
 
@@ -22,11 +22,12 @@
 #   |_|\___||___/\__|
 #
 =begin test
-require 'spec/autorun'
+require 'test/unit'
 
-describe '' do
-  it '' do
+class TheTest < Test::Unit::TestCase
+  def test_1
   end
+
 end
 =end
 

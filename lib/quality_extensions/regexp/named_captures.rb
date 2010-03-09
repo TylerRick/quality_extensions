@@ -1,6 +1,7 @@
 # http://tfletcher.com/lib/named_captures.rb
 require 'strscan'
 
+# TODO: require the file that defines this instead
 class Module
   # c.f. ActiveSupport
   def alias_method_chain(target, feature)
@@ -13,7 +14,7 @@ end
 
 class MatchData
   attr_accessor :capture_names
-  
+
   def method_missing(capture_name, *args, &block)
     if index = capture_names.index(capture_name)
       return self[index + 1]
@@ -37,10 +38,10 @@ class Regexp
   end
 
   private
-  
+
   def extract_capture_names_from(pattern)
     names, scanner, last_close = [], StringScanner.new(pattern), nil
-    
+
     while scanner.skip_until(/\(/)
       next if scanner.pre_match =~ /\\$/
 
@@ -51,7 +52,7 @@ class Regexp
       else
         names << :capture
       end
-      
+
       while scanner.skip_until(/[()]/)
         if scanner.matched =~ /\)$/
           (names.size - 1).downto(0) do |i|
@@ -66,14 +67,14 @@ class Regexp
         end
       end
     end
-    
+
     return names
   end
 end
 
 if __FILE__ == $0 then
   require 'test/unit'
-  
+
   class NamedCapturesTest < Test::Unit::TestCase
     def test_escaped_brackets_are_ignored
       assert /\(\)\(\)/.capture_names.empty?

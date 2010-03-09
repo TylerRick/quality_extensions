@@ -33,7 +33,7 @@ class Module
   #     # Section of code during which you don't want any stupid stuff to happen
   #   end                          # Causes @stupid_stuff_disabled to be set back to false
   #   # Okay, a, you can resume doing stupid stuff again...
-  #   
+  #
   # If you want your guard method to *disable* the flag rather than *enable* it, simply pass false to the guard method.
   #
   # These calls can be nested however you wish:

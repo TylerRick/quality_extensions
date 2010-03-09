@@ -21,11 +21,12 @@ require 'quality_extensions/module/attribute_accessors'
 # alternative is dirt simple, and it still works.
 module ExamplePrinter
   # Prints the given statement (+code+ -- a string) before evaluating it.
-  # Same as xmp only it doesn't print the return value.
+  # Same as xmp only it doesn't print the return value. Is it instead of xmp when the return value isn't interesting or might even be distracting to the reader.
   #
   #   o = nil
-  #   xmp 'o = C.new', binding
-  #   # => o = C.new
+  #   put_statement 'o = C.new', binding
+  #   # Outputs:
+  #   # o = C.new
   def put_statement(code, binding = nil, file = __FILE__, line = __LINE__)
 
     # We'd like to be able to just use the binding of the caller without passing it in, but unfortunately I don't know how (yet)...
@@ -46,6 +47,12 @@ module ExamplePrinter
   # Pretty much compatible with irb/xmp. But you have currently have to pass
   # in the binding manually if you have any local variables/methods that xmp
   # should have access to.
+  #
+  #   o = nil
+  #   xmp '3 + x', binding
+  #   # Outputs:
+  #   # 3 + x
+  #   # => 4
   def xmp(code, binding = nil, options = {})
     result = put_statement(code, binding)
     puts "=> #{result}"

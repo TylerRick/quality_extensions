@@ -14,6 +14,8 @@ class Object
     (
         methods(include_super) \
       - instance_methods
+      #- Object.instance_methods ?
+      #- Module.methods
     ).
       sort
   end

@@ -2,11 +2,13 @@
 # Author::    Tyler Rick
 # Copyright:: Copyright (c) 2007 QualitySmith, Inc.
 # License::   Ruby License
-# Submit to Facets?:: Yes.
+# Submit to Facets?:: No.
+# Deprecated. Ruby 1.9 implements #select correctly.
 #++
 
 require "rubygems"
 
+if RUBY_VERSION < '1.9'
 class Hash
   # call-seq:
   #   hash.hash_select {| key, value | block }  -> hash
@@ -24,6 +26,7 @@ class Hash
   alias_method :hash_find_all, :hash_select
   alias_method :delete_unless, :hash_select
 end
+end
 
 #  _____         _
 # |_   _|__  ___| |_
@@ -34,7 +37,7 @@ end
 =begin test
 require 'test/unit'
 
-class TheTest < Test::Unit::TestCase
+class HashSelectTest < Test::Unit::TestCase
   def test_1
     hash_copy = hash = {:a => 1, :b => 2}
     assert_equal hash.reject      {|k,v| k != :b},

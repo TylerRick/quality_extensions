@@ -1,6 +1,6 @@
 #--
 # Author::    Tyler Rick
-# Copyright:: Copyright (c) 2010, Tyler Rick
+# Copyright:: Copyright (c) 2009, Tyler Rick
 # License::   Ruby License
 # Submit to Facets?::
 # Developer notes::
@@ -9,6 +9,11 @@
 
 
 
+class String
+  def safe_in_comment
+    gsub('-', '&#45;')
+  end
+end
 
 
 
@@ -24,8 +29,9 @@
 =begin test
 require 'spec/autorun'
 
-describe '' do
-  it '' do
+describe 'safe_in_comment' do
+  it 'works' do
+    '1-2'.safe_in_comment.should == '1&#45;2'
   end
 end
 =end

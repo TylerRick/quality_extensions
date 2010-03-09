@@ -32,11 +32,12 @@ require 'quality_extensions/module/alias_method_chain'
 # end
 
 class Float
+  # This is the same as round_at except instead of rounding (up or down) to the nearest integer, it always truncates, rounding down to the next lowest integer.
   def truncate_with_precision(d)
    (self * (10.0 ** d)).truncate_without_precision.to_f / (10.0 ** d)
   end
   alias_method_chain :truncate, :precision
-end 
+end
 
 
 #  _____         _

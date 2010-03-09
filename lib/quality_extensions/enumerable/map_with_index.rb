@@ -4,6 +4,8 @@
 # License::   Ruby License
 # Submit to Facets?:: Yes. facets/enumerable/collect.rb only has non-in-place version (map_with_index).
 # Developer notes::
+# * No longer needed in Ruby 1.9.1:
+#   a.to_enum(:map!).with_index
 # Changes::
 #++
 

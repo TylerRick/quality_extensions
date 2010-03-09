@@ -4,6 +4,7 @@
 # License::   Ruby License
 # Submit to Facets?:: Yes.
 # Developer notes:
+# To do: write an add_prefix_to_output method based on this that prefixes all lines output with some string, to help group them together when looking through a long log file
 #++
 
 require 'stringio'

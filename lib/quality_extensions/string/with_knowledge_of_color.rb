@@ -55,23 +55,31 @@ gem 'colored'
 require 'colored'
 
 class TheTest < Test::Unit::TestCase
+
   def test_strip_color
     assert       "abc" != "abc".blue
     assert_equal "abc",   "abc".blue.strip_color
+
+    assert       "abc" != "abc".underline
+    assert_equal "abc",   "a#{'b'.underline}c".strip_color
   end
+
   def test_length_without_color
     assert_equal 12, "abc".blue.length
     assert_equal 3,  "abc".blue.length_without_color
   end
+
   def test_nonprinting_characters_used_for_color
     assert_equal "\e[34m\e[0m", 'abc'.blue.nonprinting_characters_used_for_color
   end
+
   def test_ljust_with_color
     assert_equal "abc  ", 'abc'.     ljust(              5)
     assert_equal "abc  ", 'abc'.blue.ljust_with_color(5).strip_color
     assert_equal "\e[34mabc\e[0m  ", 'abc'.blue.ljust_with_color(5)
     assert_equal "\e[34mabc\e[0m\e[44m \e[0m\e[44m \e[0m", 'abc'.blue.ljust_with_color(5, ' '.on_blue)
   end
+
   def test_rjust_with_color
     assert_equal "  abc", 'abc'.     rjust(              5)
     assert_equal "  abc", 'abc'.blue.rjust_with_color(5).strip_color
