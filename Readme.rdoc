@@ -1,14 +1,13 @@
 = Quality Ruby Extensions
 
-[<b>Home page</b>:]        http://quality-ext.rubyforge.org/
-[<b>Project site</b>:]     http://github.com/TylerRick/quality_extensions/tree/master / http://rubyforge.org/projects/quality-ext/ 
+[<b>Project site</b>:]     http://github.com/TylerRick/quality_extensions/tree/master
 [<b>Gem install</b>:]      <tt>gem install quality_extensions</tt>
 [<b>Author</b>:]           Tyler Rick <github.com|tylerrick.com> and others
 [<b>License</b>:]          {Ruby License}[link:files/License.html]
 
 == Introduction
 
-QualityExtensions is a library of general-purpose, reusable methods/classes that are compatible with/built-upon Facets (2.4.4) but not (yet) included in Facets... including FileTest.binary_file?, Enumerable#enum, String#digits_only, send_if_not_nil, send_if_true, send_unless, Kernel#capture_output, Kernel#backtrace, Symbol#=~, Hash#hash_select, Hash#delete_unless, Array#expand_ranges, assert_changed, assert_contains, and many more.
+QualityExtensions is a library of general-purpose, reusable methods/classes that are compatible with/built-upon Facets but not (yet) included in Facets... including FileTest.binary_file?, String#digits_only, send_if_not_nil, send_if_true, send_unless, Kernel#capture_output, Kernel#backtrace, Symbol#=~, Hash#hash_select, Hash#delete_unless, Array#expand_ranges, assert_changed, assert_contains, and many more.
 
 It is similar in purpose and layout to {Ruby Facets}[http://facets.rubyforge.org/] but not intended _compete_ with Facets.
 
