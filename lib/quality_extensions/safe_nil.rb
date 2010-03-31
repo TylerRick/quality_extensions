@@ -51,18 +51,15 @@ class NilClass
   end
 end
 
+# http://railstips.org/blog/archives/2009/08/07/patterns-are-not-scary-method-missing-proxy/
+class BasicObject #:nodoc:
+  instance_methods.each { |m| undef_method m unless m =~ /^__|instance_eval/ }
+end unless defined?(BasicObject)
 
 # Extending BasicObject because it provides us with a clean slate. It is similar to Object except it has almost all the standard methods stripped away so that
 # we will hit method_missing for almost all method routing.
-class SafeNil < BlankSlate
+class SafeNil < BasicObject
   include ::Singleton   # I assume this is because it's faster than instantiating a new object each time.
-
-  undef inspect   # Use nil's version of inspect... although I wonder whether it would be better to have it return "SafeNil" so you know it's different than a normal nil.
-  #def inspect
-  #  'SafeNil'
-  #end
-
-  undef to_s
 
   def method_missing(method, *args, &block)
     return nil  unless nil.respond_to?(method)      # A much faster alternative to 'rescue nil' that can be used most of the time to speed things up.

@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tyler Rick", "and others"]
-  s.date = %q{2010-03-09}
+  s.date = %q{2010-03-31}
   s.email = %q{github.com@tylerrick.com}
   s.files = [
     ".gitignore",
@@ -114,6 +114,7 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/array/delete_if_bang.rb",
      "lib/quality_extensions/array/expand_ranges.rb",
      "lib/quality_extensions/array/group_by.rb",
+     "lib/quality_extensions/array/include_any_of.rb",
      "lib/quality_extensions/array/justify.rb",
      "lib/quality_extensions/array/mean.rb",
      "lib/quality_extensions/array/select_if_bang.rb",
@@ -138,6 +139,8 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/dir/each_child.rb",
      "lib/quality_extensions/enumerable/all_same.rb",
      "lib/quality_extensions/enumerable/every.rb",
+     "lib/quality_extensions/enumerable/grep_with_index.rb",
+     "lib/quality_extensions/enumerable/grepv.rb",
      "lib/quality_extensions/enumerable/group_by_and_map.rb",
      "lib/quality_extensions/enumerable/map_with_index.rb",
      "lib/quality_extensions/enumerable/select_bang.rb",
@@ -156,6 +159,7 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/hash/delete_unless.rb",
      "lib/quality_extensions/hash/except.rb",
      "lib/quality_extensions/hash/hash_select.rb",
+     "lib/quality_extensions/hash/merge_if.rb",
      "lib/quality_extensions/hash/only.rb",
      "lib/quality_extensions/hash/to_date.rb",
      "lib/quality_extensions/hash/to_query_string.rb",
@@ -176,7 +180,10 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/kernel/simulate_input.rb",
      "lib/quality_extensions/kernel/sleep_loudly.rb",
      "lib/quality_extensions/kernel/trap_chain.rb",
+     "lib/quality_extensions/kernel/uninterruptable.rb",
      "lib/quality_extensions/kernel/windows_platform.rb",
+     "lib/quality_extensions/matrix/indexable.rb",
+     "lib/quality_extensions/matrix/linked_vectors.rb",
      "lib/quality_extensions/module/alias_method.rb",
      "lib/quality_extensions/module/alias_method_chain.rb",
      "lib/quality_extensions/module/ancestry_of_instance_method.rb",
@@ -219,20 +226,26 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/regexp/named_captures.rb",
      "lib/quality_extensions/regexp/rfc822.rb",
      "lib/quality_extensions/regexp/to_plain_s.rb",
+     "lib/quality_extensions/safe_method.rb",
      "lib/quality_extensions/safe_nil.rb",
      "lib/quality_extensions/string/all.rb",
+     "lib/quality_extensions/string/chomped_lines.rb",
      "lib/quality_extensions/string/constantize.rb",
      "lib/quality_extensions/string/digits_only.rb",
      "lib/quality_extensions/string/each_char_with_index.rb",
+     "lib/quality_extensions/string/integer_eh.rb",
      "lib/quality_extensions/string/md5.rb",
+     "lib/quality_extensions/string/numeric_eh.rb",
      "lib/quality_extensions/string/prefix.rb",
      "lib/quality_extensions/string/prefix_lines.rb",
      "lib/quality_extensions/string/safe_in_comment.rb",
+     "lib/quality_extensions/string/safe_numeric_conversion.rb",
      "lib/quality_extensions/string/shell_escape.rb",
      "lib/quality_extensions/string/to_underscored_label.rb",
      "lib/quality_extensions/string/with_knowledge_of_color.rb",
      "lib/quality_extensions/symbol/constantize.rb",
      "lib/quality_extensions/symbol/match.rb",
+     "lib/quality_extensions/table.rb",
      "lib/quality_extensions/template.rb",
      "lib/quality_extensions/template.rb_test_unit.rb",
      "lib/quality_extensions/test/all.rb",
@@ -246,12 +259,15 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/test/difference_highlighting.rb",
      "lib/quality_extensions/time/all.rb",
      "lib/quality_extensions/time/deprecated.rb",
+     "lib/quality_extensions/timeout/countdown_timer.rb",
+     "lib/quality_extensions/vector/enumerable.rb",
+     "quality_extensions.gemspec",
      "test/all.rb"
   ]
   s.homepage = %q{http://github.com/TylerRick/quality_extensions}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.6}
+  s.rubygems_version = %q{1.3.5}
   s.summary = %q{A collection of reusable Ruby methods which are not (yet) in Facets.}
   s.test_files = [
     "test/all.rb"
