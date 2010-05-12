@@ -19,7 +19,8 @@ require 'builder/blankslate'
 
 
 class Object
-  # not sure if receiver is nil?
+  # If you are not sure if the receiver is nil?, you can prefix a method call / operation with _? to be safe. If the receiver is not nil, it will behave as if you'd called your method on the receiver directly.
+  # If on the other hand the receiver is nil (see NilClass#_?), calling _? will cause an instance of SafeNil to be the *real* receiver, which will returns nil when you actually call whatever real method you are calling.
   def _?
     self
   end
@@ -58,14 +59,18 @@ end unless defined?(BasicObject)
 
 # Extending BasicObject because it provides us with a clean slate. It is similar to Object except it has almost all the standard methods stripped away so that
 # we will hit method_missing for almost all method routing.
+#
+# See NilClass#_?/Object#_?
 class SafeNil < BasicObject
   include ::Singleton   # I assume this is because it's faster than instantiating a new object each time.
 
+  # See NilClass#_?/Object#_?
   def method_missing(method, *args, &block)
     return nil  unless nil.respond_to?(method)      # A much faster alternative to 'rescue nil' that can be used most of the time to speed things up.
     nil.send(method, *args, &block) rescue nil
   end
 
+  # See NilClass#_?/Object#_?
   def nil?; true; end
   def blank?; true; end
 end
@@ -95,8 +100,8 @@ class TheTest < Test::Unit::TestCase
 
   def test_to_s
     assert_equal '', nil._?.to_s
-    assert_equal '{}', {}._?.to_s
-    assert_equal '[]', []._?.to_s
+    assert_equal( {}.to_s, {}._?.to_s ) # this is '' in 1.8, '{}' in 1.9
+    assert_equal [].to_s, []._?.to_s
   end
 
   def test_chaining
