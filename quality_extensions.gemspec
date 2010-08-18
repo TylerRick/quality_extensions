@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{quality_extensions}
-  s.version = "1.2.0"
+  s.version = "1.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tyler Rick", "and others"]
-  s.date = %q{2010-03-31}
+  s.date = %q{2010-08-18}
   s.email = %q{github.com@tylerrick.com}
   s.files = [
     ".gitignore",
@@ -110,6 +110,7 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/all.rb",
      "lib/quality_extensions/array/all.rb",
      "lib/quality_extensions/array/all_same.rb",
+     "lib/quality_extensions/array/average.rb",
      "lib/quality_extensions/array/classify.rb",
      "lib/quality_extensions/array/delete_if_bang.rb",
      "lib/quality_extensions/array/expand_ranges.rb",
@@ -241,6 +242,7 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/string/safe_in_comment.rb",
      "lib/quality_extensions/string/safe_numeric_conversion.rb",
      "lib/quality_extensions/string/shell_escape.rb",
+     "lib/quality_extensions/string/to_proc.rb",
      "lib/quality_extensions/string/to_underscored_label.rb",
      "lib/quality_extensions/string/with_knowledge_of_color.rb",
      "lib/quality_extensions/symbol/constantize.rb",
@@ -267,7 +269,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/TylerRick/quality_extensions}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{A collection of reusable Ruby methods which are not (yet) in Facets.}
   s.test_files = [
     "test/all.rb"
@@ -277,7 +279,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
     else
     end
   else
