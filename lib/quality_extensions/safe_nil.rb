@@ -12,6 +12,7 @@
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'singleton'
 require 'rubygems'
+#require 'facets/functor'
 gem 'builder'
 require 'builder/blankslate'
 #require 'facets/basicobject'
@@ -24,6 +25,10 @@ class Object
   def _?
     self
   end
+
+  #def unless_blank?
+  #  self
+  #end
 end
 
 class NilClass
@@ -88,8 +93,58 @@ end
 =begin test
 require 'test/unit'
 
-class TheTest < Test::Unit::TestCase
+class SafeNilTest < Test::Unit::TestCase
   def test_simple__nil
+    hash = {}
+    assert_equal nil,      hash[:a]._?.length
+  end
+  def test_simple__normal_objects
+    hash = {:a => 'abc'}
+    assert_equal 3,        hash[:a]._?.length
+  end
+
+  def test_to_s
+    assert_equal '', nil._?.to_s
+    assert_equal( {}.to_s, {}._?.to_s ) # this is '' in 1.8, '{}' in 1.9
+    assert_equal [].to_s, []._?.to_s
+  end
+
+  def test_chaining
+    hash = {}
+    assert_equal nil, hash[:a]._?.foo
+    assert_equal nil, hash[:a]._?[:b]._?[:c]
+    assert_equal nil, hash[:a]._?[:b]._?[:c]._?.some_method
+  end
+
+  # As far as I know, this is impossible to get to pass, since by design an object in Ruby is *always* truthy unless it is false or nil
+  #def test_or_ing
+  #  assert_equal 'else', nil._? || 'else'
+  #end
+
+  def test_inspect
+    assert_equal 'nil', nil._?.inspect
+  end
+
+  def test_does_not_permanently_modify_nil_class
+    assert_raise(NoMethodError) { nil.foo }
+    nil._?
+    assert_raise(NoMethodError) { nil.foo }
+  end
+
+  def test_nil?
+    assert SafeNil.instance.nil?
+  end
+
+  def test_blank?
+    require 'facets/blank'
+    assert nil.blank?
+    assert SafeNil.instance.blank?
+    assert ({1=>'a', 2=>'b'})[3]._?.blank?
+  end
+end
+
+class UnlessBlankTest < Test::Unit::TestCase
+  def test_simple__blank
     hash = {}
     assert_equal nil,      hash[:a]._?.length
   end
