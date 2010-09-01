@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{quality_extensions}
-  s.version = "1.2.1"
+  s.version = "1.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tyler Rick", "and others"]
-  s.date = %q{2010-08-18}
+  s.date = %q{2010-09-01}
   s.email = %q{github.com@tylerrick.com}
   s.files = [
     ".gitignore",
@@ -144,6 +144,7 @@ Gem::Specification.new do |s|
      "lib/quality_extensions/enumerable/grepv.rb",
      "lib/quality_extensions/enumerable/group_by_and_map.rb",
      "lib/quality_extensions/enumerable/map_with_index.rb",
+     "lib/quality_extensions/enumerable/max_by_value.rb",
      "lib/quality_extensions/enumerable/select_bang.rb",
      "lib/quality_extensions/enumerable/select_until.rb",
      "lib/quality_extensions/enumerable/select_while.rb",
