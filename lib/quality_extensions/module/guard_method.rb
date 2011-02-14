@@ -14,8 +14,8 @@
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'rubygems'
 require 'quality_extensions/module/attribute_accessors'
-require 'facets/kernel/require_local'
-require_local 'bool_attr_accessor'
+require 'facets/kernel/require_relative'
+require_relative 'bool_attr_accessor'
 #require 'quality_extensions/module/bool_attr_accessor'
 require 'quality_extensions/symbol/match'
 

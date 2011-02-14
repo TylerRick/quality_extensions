@@ -1,4 +1,4 @@
 gem 'facets'
-require 'facets/kernel/require_local'
+require 'facets/kernel/require_relative'
 # Alias for:
-require_local 'prefix'
+require_relative 'prefix'

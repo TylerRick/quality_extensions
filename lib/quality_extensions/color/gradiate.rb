@@ -8,10 +8,10 @@
 # Changes::
 #++
 
-require 'facets/kernel/require_local'
-require_local 'rgb'
-require_local '../numeric/diff'
-require_local '../enumerable/every'
+require 'facets/kernel/require_relative'
+require_relative 'rgb'
+require_relative '../numeric/diff'
+require_relative '../enumerable/every'
 
 module Enumerable
 
@@ -59,7 +59,7 @@ module Enumerable
       next object
     end
   end
-  
+
 end
 
 #  _____         _

@@ -9,8 +9,8 @@ $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'rubygems'
 require 'facets/filelist'
 
-require 'facets/kernel/require_local'
-require_local '../file/exact_match_regexp'
+require 'facets/kernel/require_relative'
+require_relative '../file/exact_match_regexp'
 
 module Kernel
 
@@ -60,7 +60,7 @@ module Kernel
   #
   # All of the +options+ available for +require_all+ are still available here.
   #
-  def require_local_all(dir = './', options = {})
+  def require_relative_all(dir = './', options = {})
     raise ArgumentError.new("dir must be a String") unless dir.is_a?(String)
     local_dir = File.dirname( caller[0] )
     require_all(
@@ -86,7 +86,7 @@ require 'English'
 class TheTest < Test::Unit::TestCase
   def setup
     @base_dir = "#{Dir.tmpdir}/require_all_test"
-    @base_local_dir = File.dirname(__FILE__) # To allow testing of require_local_all. But tests should put everything in "#{@base_local_dir}/require_all_test" to avoid clutter or name conflicts with other files!
+    @base_local_dir = File.dirname(__FILE__) # To allow testing of require_relative_all. But tests should put everything in "#{@base_local_dir}/require_all_test" to avoid clutter or name conflicts with other files!
     FileUtils.mkdir              @base_dir
     @deep_dir = "really/really/deep/subdir"
     $loaded = []
@@ -137,11 +137,11 @@ class TheTest < Test::Unit::TestCase
     assert_equal ['require_me.rb'], $loaded
   end
 
-  def test_require_local_all
+  def test_require_relative_all
     create_ruby_file 'require_all_test/lib/require_me.rb', @base_local_dir
     create_ruby_file 'require_all_test/lib/please_ignore_me.rb', @base_local_dir
 
-    require_local_all 'require_all_test/lib', :exclude => [/ignore/]
+    require_relative_all 'require_all_test/lib', :exclude => [/ignore/]
     assert_equal ['require_all_test/lib/require_me.rb'], $loaded
   end
 
@@ -172,7 +172,7 @@ class TheTest < Test::Unit::TestCase
     #require_all File.dirname(@base_dir), :exclude => [/^all\.rb$/]
     # This works, but it's too much to expect users to type out!:
     #require_all File.dirname(@base_dir), :exclude => [/(\/|^)all\.rb$/]
-    
+
     # So...... I added an :exclude_files option so that people wouldn't have to!
     require_all File.dirname(@base_dir), :exclude_files => ['all.rb']
 

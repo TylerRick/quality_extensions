@@ -8,8 +8,8 @@
 # History::
 #++
 
-require 'facets/kernel/require_local'
-require_local 'select_bang'
+require 'facets/kernel/require_relative'
+require_relative 'select_bang'
 
 module Enumerable
 #   def reject!

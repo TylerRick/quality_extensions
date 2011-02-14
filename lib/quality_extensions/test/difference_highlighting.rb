@@ -9,7 +9,7 @@
 require 'facets'
 
 if $LOADED_FEATURES.detect {|f| f =~ %r(minitest/unit.rb)}
-  require_local 'difference_highlighting-minitest.rb'
+  require_relative 'difference_highlighting-minitest.rb'
 else
-  require_local 'difference_highlighting-test_unit.rb'
+  require_relative 'difference_highlighting-test_unit.rb'
 end

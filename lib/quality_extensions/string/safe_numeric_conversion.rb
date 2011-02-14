@@ -1,7 +1,7 @@
 #--
 # Author::    Tyler Rick
 # Copyright:: Copyright (c) 2001, Leo [ slonika AT yahoo DOT com ], Tyler Rick
-# Credits:: 
+# Credits::
 # - http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/14518
 # License::   Ruby License
 # Submit to Facets?::
@@ -24,8 +24,8 @@
 class NumericError < RuntimeError
 end
 
-require 'facets/kernel/require_local'
-require_local 'numeric_eh'
+require 'facets/kernel/require_relative'
+require_relative 'numeric_eh'
 
 
 class String
@@ -33,9 +33,9 @@ class String
   alias __std__to_f to_f   if ! method_defined? :__std__to_f
   alias __std__hex  hex    if ! method_defined? :__std__hex
   alias __std__oct  oct    if ! method_defined? :__std__oct
-  
+
   def to_i()
-    case self 
+    case self
     when /^[-+]?0\d/         then  __std__oct
     when /^[-+]?0x[a-f\d]/i  then  __std__hex
     when /^[-+]?\d/          then  __std__to_i

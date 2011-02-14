@@ -1,3 +1,3 @@
 # Alias for:
-require 'facets/kernel/require_local'
-require_local 'only'
+require 'facets/kernel/require_relative'
+require_relative 'only'

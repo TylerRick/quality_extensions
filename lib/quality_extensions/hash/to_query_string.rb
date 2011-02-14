@@ -8,8 +8,8 @@
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 autoload :CGI, 'cgi'
 require 'rubygems'
-require 'facets/kernel/require_local'
-require_local '../array/to_query_string.rb'
+require 'facets/kernel/require_relative'
+require_relative '../array/to_query_string.rb'
 
 class Hash
 
@@ -86,7 +86,7 @@ class TheTest < Test::Unit::TestCase
         }
       }
     }
-    assert_equal ['foo=bar', 'names[common]=smith', 'names[uncommon][first]=lance', 'names[uncommon][last]=wilheiminkauf'].to_set, 
+    assert_equal ['foo=bar', 'names[common]=smith', 'names[uncommon][first]=lance', 'names[uncommon][last]=wilheiminkauf'].to_set,
                   data.to_query_string.split(/&/).to_set
   end
   def test_hash_to_query_string_nesting_2
@@ -98,13 +98,13 @@ class TheTest < Test::Unit::TestCase
         ]
     }
     assert_equal 'names[common]=smith&names[uncommon][]=frankenwatzel&names[uncommon][]=wilheiminkauf', data.to_query_string('names')
-    assert_equal( {'names' => data}.to_query_string(), 
+    assert_equal( {'names' => data}.to_query_string(),
                   data.to_query_string('names') )
   end
-  
+
   def test_hash_to_query_string_encoding
     data = {'f&r' => 'a w$'}
-    
+
     assert_equal 'f%26r=a+w%24', data.to_query_string
   end
 end

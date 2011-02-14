@@ -1,4 +1,4 @@
 # Alias for:
-require 'facets/kernel/require_local'
-require_local '../range_list'
+require 'facets/kernel/require_relative'
+require_relative '../range_list'
 

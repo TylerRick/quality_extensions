@@ -9,8 +9,8 @@
 # * !! Why does Hash#each_with_index yield |(k,v), i| but my select_with_index yields flat |k, v, i| ?
 #++
 
-require 'facets/kernel/require_local'
-require_local 'select_with_index'
+require 'facets/kernel/require_relative'
+require_relative 'select_with_index'
 
 module Enumerable
   # Original version before I changed it to use select so that Hash#select_until would return a hash instead of an array.

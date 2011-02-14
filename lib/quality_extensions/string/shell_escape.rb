@@ -9,7 +9,7 @@ $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'rubygems'
 require 'escape'    # http://www.a-k-r.org/escape/
 require 'facets/symbol/to_proc'
-require 'facets/kernel/require_local'
+require 'facets/kernel/require_relative'
 
 class String
   def shell_escape
@@ -34,11 +34,11 @@ class TheTest < Test::Unit::TestCase
     assert_equal input, output
   end
   def test_using_echo_1
-    assert_that_echo_gives_back_what_we_put_in( 
+    assert_that_echo_gives_back_what_we_put_in(
       %q{!&'"`$0 |()<>} )
   end
   def test_using_echo_2
-    assert_that_echo_gives_back_what_we_put_in( 
+    assert_that_echo_gives_back_what_we_put_in(
       %q{'an arg that's got "quotes"} )
   end
 
