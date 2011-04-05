@@ -11,11 +11,9 @@ $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'rubygems'
 require 'facets/module/alias_method_chain'
 
-unless defined?(Symbol::HasSymbolSupport)
+unless :a =~ /a/
 
 class Symbol
-  HasSymbolSupport = true
-
   def match(regexp)
     to_s.match(regexp)
   end
@@ -92,10 +90,10 @@ module Enumerable
     }.grep_without_regexp_support_for_symbols(pattern, &block)
   end
   alias_method_chain :grep, :regexp_support_for_symbols
-  
+
 end
 
-end # unless defined?(Symbol::HasSymbolSupport)
+end # unless :a =~ /a/
 
 #  _____         _
 # |_   _|__  ___| |_
