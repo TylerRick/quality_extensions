@@ -203,6 +203,40 @@ module Enumerable
       end
     end
   end
+
+
+  # Returns all elements of +enum+ starting at the first element for which +block+ is truthy, and continuing until the end.
+  #
+  # Examples:
+  #
+  # (0..3).select_from        {|v| v == 1} # => [1, 2, 3]
+  # (0..3).select_from(false) {|v| v == 1} # => [2, 3]
+  #
+  # {'a'=>1, 'b'=>2, 'c'=>3, 'd'=>1}.select_from        {|k, v| v == 2} ) # => {"b"=>2, "c"=>3, "d"=>1}
+  # {'a'=>1, 'b'=>2, 'c'=>3, 'd'=>1}.select_from(false) {|k, v| v == 2} ) # => {"c"=>3, "d"=>1}
+  #
+  # Compare to Array#from in ActiveSupport.
+  # (maybe should rename to #from?)
+  #
+  def select_from(inclusive = true)
+    return self unless block_given?
+
+    selecting = false
+    select do |*args|
+      # Once we hit the first truthy result, selecting will be true to the end
+      select_this_el = !!yield(*args)
+      this_is_first_true = !selecting && select_this_el
+      selecting = selecting || select_this_el
+      if inclusive
+        selecting
+      else
+        selecting && !this_is_first_true
+      end
+    end
+  end
+  alias_method :select_all_starting_with, :select_from
+  alias_method :reject_until, :select_from
+
 end
 
 
@@ -394,6 +428,37 @@ class SelectUntilLastTest < Test::Unit::TestCase
   end
 
 end
+
+class SelectFromTest < Test::Unit::TestCase
+  def test_simplest_case
+    assert_equal [1], [1].select_from        {|v| v == 1}
+    assert_equal [],  [1].select_from(false) {|v| v == 1}  # if exclusive, we won't even return the one and only element
+  end
+
+  # So basic we could have just used select {|v| v >= 2}
+  def test_basic_usage
+    assert_equal [2, 3, 4],  [1, 2, 3, 4].select_from        {|v| v == 2}
+    assert_equal [   3, 4],  [1, 2, 3, 4].select_from(false) {|v| v == 2}
+  end
+
+  def test_with_duplicate_values
+    assert_equal [2, 1, 2],  [1, 2, 1, 2].select_from        {|v| v == 2}
+    assert_equal [   1, 2],  [1, 2, 1, 2].select_from(false) {|v| v == 2}
+  end
+end
+
+# This was an idea -- probably a bad idea...
+#class SelectFromUntilTest < Test::Unit::TestCase
+#  def test_simplest_case
+#    assert_equal [1], [1].select_from_until        {|v| v == 1, v == 1}
+#    assert_equal [],  [1].select_from_until(false) {|v| v == 1, v == 1}  # if exclusive, we won't even return the one and only element
+#  end
+#
+#  def test_basic_usage
+#    # So basic we could have just used:
+#    assert_equal [2, 3, 4],  [1, 2, 3, 4].select {|v| (2..4).include? v}
+#    assert_equal [2, 3, 4],  [1, 2, 3, 4].select_from_until        {|v| v == 2, v == 4}
+#    assert_equal [   3, 4],  [1, 2, 3, 4].select_from_until(false) {|v| v == 2, v == 4}
+#  end
+#end
 =end
-
-
