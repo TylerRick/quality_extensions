@@ -104,8 +104,11 @@ class Pathname
   #
   # FileUtils.touch 'timestamp'
   # FileUtils.touch Dir.glob('*.c');  system 'make'
+  #
+  # Returns self. This is different from FileUtils.touch, which returns an array of filenames.
+  #
   def touch
-    FileUtils.touch self.to_s
+    tap {|file| FileUtils.touch file.to_s }
   end
 
   # Moves self to +new_path+ using FileUtils.mv.
