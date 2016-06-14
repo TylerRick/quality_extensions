@@ -19,7 +19,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'stringio'
-require 'rubygems'
 require 'facets/dictionary'
 
 module Kernel

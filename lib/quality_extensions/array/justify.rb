@@ -8,7 +8,6 @@
 # To do::
 #++
 
-require 'rubygems'
 require 'facets/kernel/deep_copy'
 require File.dirname(__FILE__) + '/../vector/enumerable'
 require File.dirname(__FILE__) + '/../matrix/linked_vectors'

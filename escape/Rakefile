@@ -1,4 +1,3 @@
-require 'rubygems'
 gem 'quality_rake_tasks'
 require 'quality_rake_tasks'
 

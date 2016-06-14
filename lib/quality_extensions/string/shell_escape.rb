@@ -6,10 +6,7 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'escape'    # http://www.a-k-r.org/escape/
-require 'facets/symbol/to_proc'
-require 'facets/kernel/require_relative'
 
 class String
   def shell_escape

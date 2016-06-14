@@ -29,7 +29,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/kernel/capture_output'
 require 'fileutils'
 

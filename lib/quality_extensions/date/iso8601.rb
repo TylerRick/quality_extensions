@@ -7,7 +7,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'date'
-require 'rubygems'
 require 'facets/date'   # I'm guessing this used to provide iso8601 ... no longer does?
 
 class Date

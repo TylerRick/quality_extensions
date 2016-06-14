@@ -6,7 +6,6 @@
 # Developer notes::
 #++
 
-require 'rubygems'
 require 'facets/numeric/round'
 require 'quality_extensions/module/alias_method_chain'
 

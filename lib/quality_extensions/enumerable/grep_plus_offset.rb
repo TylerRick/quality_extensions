@@ -9,7 +9,6 @@
 
 
 require 'facets/enumerable/map_send'
-require 'facets/kernel/require_relative'
 require_relative 'grep_indexes'
 
 module Enumerable

@@ -12,7 +12,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'quality_extensions/module/attribute_accessors'
 #require 'facets/binding/self/of_caller'
 
@@ -69,7 +68,6 @@ include ExamplePrinter
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/kernel/capture_output'
 require 'facets/string/tab'
 

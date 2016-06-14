@@ -7,8 +7,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 autoload :CGI, 'cgi'
-require 'rubygems'
-require 'facets/kernel/require_relative'
 require_relative '../array/to_query_string.rb'
 
 class Hash
@@ -71,7 +69,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'set'
 
 class TheTest < Test::Unit::TestCase

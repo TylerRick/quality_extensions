@@ -95,7 +95,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/test/assert_exception'
 require 'quality_extensions/test/assert_includes'
 

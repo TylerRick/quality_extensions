@@ -7,8 +7,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
-require 'facets/symbol/to_proc'
 
 class Module
   # Very similar to Facets' +Module#nesting+, but, whereas +nesting+ will break <tt>A::B</tt> into an array of _constants_ represting nesting

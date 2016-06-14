@@ -120,7 +120,6 @@ end
 
 
 require 'singleton'
-require 'rubygems'
 require 'facets/more/basicobject'
 
 

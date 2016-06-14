@@ -8,7 +8,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'facets/module/alias_method_chain'
 
 class Exception
@@ -35,7 +34,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'facets/ruby' # lines
 
 class TheTest < Test::Unit::TestCase

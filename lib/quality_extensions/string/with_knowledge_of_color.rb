@@ -50,7 +50,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 gem 'colored'
 require 'colored'
 

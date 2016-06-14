@@ -11,7 +11,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'singleton'
-require 'rubygems'
 #require 'facets/functor'
 gem 'builder'
 require 'builder/blankslate'

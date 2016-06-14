@@ -24,11 +24,9 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'quality_extensions/hash/assert_has_only_keys'
 require 'facets/hash/merge'
 require 'facets/kernel/constant'
-require 'facets/symbol/to_proc'
 require 'quality_extensions/module/split'
 require 'quality_extensions/module/basename'
 require 'quality_extensions/module/dirname'
@@ -136,7 +134,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/module/attribute_accessors'
 require 'quality_extensions/module/namespace'
 require 'quality_extensions/symbol/constantize'

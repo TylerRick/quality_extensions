@@ -23,9 +23,7 @@ end
 =begin test
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/kernel/capture_output'
-#require 'facets/kernel/require_relative'
 #require_relative './capture_output'
 
 class TheTest < Test::Unit::TestCase

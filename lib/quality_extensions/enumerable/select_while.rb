@@ -11,7 +11,6 @@
 # * !! Why does Hash#each_with_index yield |(k,v), i| but my select_with_index yields flat |k, v, i| ?
 #++
 
-require 'facets/kernel/require_relative'
 require_relative 'select_with_index'
 
 module Enumerable

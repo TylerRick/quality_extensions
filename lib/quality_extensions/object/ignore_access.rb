@@ -18,7 +18,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'facets/functor'
 
 class Object
@@ -57,7 +56,6 @@ class TheTest < Test::Unit::TestCase
 
   # It's not identical to Kernel#meta, as this test proves! (Must run it singly, without other tests.)
 #  def test_meta
-#    require 'rubygems'; require 'facets/kernel/meta'
 #    o = Object.new
 #    o.class.meta.class_variable_set(:@@v, 'old value')
 #    assert_equal 'old value', o.class.meta.class_variable_get(:@@v)

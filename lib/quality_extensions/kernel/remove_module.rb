@@ -8,7 +8,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'quality_extensions/object/ignore_access'
 require 'quality_extensions/module/split'
 require 'quality_extensions/module/by_name'

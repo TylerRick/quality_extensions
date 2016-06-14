@@ -10,7 +10,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'quality_extensions/module/class_methods'
 require 'quality_extensions/module/ancestry_of_instance_method'
 
@@ -93,7 +92,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/test/assert_anything'
 require 'pp'
 

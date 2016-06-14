@@ -6,7 +6,6 @@
 # Developer notes::
 #++
 
-require 'rubygems'
 require 'facets/kernel/constant'
 
 class Module

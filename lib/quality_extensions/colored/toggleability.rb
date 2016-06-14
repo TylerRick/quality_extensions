@@ -7,7 +7,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 gem 'colored'
 require 'colored'
 gem 'facets'

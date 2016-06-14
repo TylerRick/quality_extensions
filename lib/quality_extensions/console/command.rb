@@ -31,7 +31,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'shellwords'
-require 'rubygems'
 require 'facets/string/modulize'
 require 'escape'  # http://www.a-k-r.org/escape/
 

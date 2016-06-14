@@ -8,7 +8,6 @@
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 require 'stringio'
-require 'rubygems'
 
 # Simulates a user typing in +input_string+ on the keyboard.
 #

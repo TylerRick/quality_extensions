@@ -7,9 +7,7 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'facets/module/alias_method_chain'
-require 'facets/symbol/to_proc'
 
 class Object
 

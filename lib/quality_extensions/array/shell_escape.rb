@@ -6,9 +6,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
-require 'facets/symbol/to_proc'
-require 'facets/kernel/require_relative'
 require_relative '../string/shell_escape.rb'
 
 require 'pp'

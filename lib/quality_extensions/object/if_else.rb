@@ -68,7 +68,6 @@ end
 =begin test
 require 'test/unit'
 
-require 'rubygems'
 require 'quality_extensions/array/average'
 
 class TheTest < Test::Unit::TestCase

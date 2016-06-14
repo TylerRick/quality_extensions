@@ -41,7 +41,6 @@
 # TODO: figure out why the test started failing
 
 require 'singleton'
-require 'rubygems'
 require 'facets/basicobject'
 
 

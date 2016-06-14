@@ -6,10 +6,8 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'facets/filelist'
 
-require 'facets/kernel/require_relative'
 require_relative '../file/exact_match_regexp'
 
 module Kernel

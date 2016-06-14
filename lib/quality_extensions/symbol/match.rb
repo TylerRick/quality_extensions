@@ -8,7 +8,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'facets/module/alias_method_chain'
 
 unless :a =~ /a/
@@ -103,7 +102,6 @@ end # unless :a =~ /a/
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/object/singleton_send'
 
 class TheTest < Test::Unit::TestCase

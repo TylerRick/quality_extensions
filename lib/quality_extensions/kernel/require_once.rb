@@ -6,7 +6,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 
 module Kernel
   # Fixes bug in Ruby (1.8, at least -- not sure if 2.0 fixes it) where a file can be required twice if the path is spelled differently.

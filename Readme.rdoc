@@ -31,7 +31,6 @@ Like Facets, this library contains:
 
 == Usage
 
-  require 'rubygems'
   gem 'quality_extensions'
 
 And then <b>include as much or as little as you want</b>.

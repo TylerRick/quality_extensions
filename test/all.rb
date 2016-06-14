@@ -4,7 +4,6 @@ require "rubygems"
 require "rake" # FileList
 require 'exacto'  # Test extractor
 
-#require 'rubygems'
 #gem 'test_extensions'
 #require 'test_extensions'
 

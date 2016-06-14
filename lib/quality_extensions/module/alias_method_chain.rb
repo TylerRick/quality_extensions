@@ -8,7 +8,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 gem 'facets'
 require 'facets/module/alias_method_chain'
 require 'facets/kernel/singleton_class'

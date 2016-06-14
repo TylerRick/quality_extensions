@@ -8,7 +8,6 @@
 #++
 
 $LOAD_PATH << File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-require 'rubygems'
 require 'facets/module/basename'
 require 'quality_extensions/module/namespace'
 

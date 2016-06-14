@@ -236,7 +236,6 @@ end
 #
 =begin test
 require 'test/unit'
-require 'rubygems'
 require 'quality_extensions/object/ignore_access'
 
 #---------------------------------------------------------------------------------------------------

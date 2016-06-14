@@ -8,7 +8,6 @@
 # Changes::
 #++
 
-require 'facets/kernel/require_relative'
 require_relative 'rgb'
 require_relative '../numeric/diff'
 require_relative '../enumerable/every'

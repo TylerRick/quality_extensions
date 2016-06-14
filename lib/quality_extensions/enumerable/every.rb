@@ -40,7 +40,6 @@ end
 #
 =begin test
 require 'spec'
-require 'facets/kernel/require_relative'
 require_relative 'enum'
 
 describe Enumerable.instance_method(:every) do
