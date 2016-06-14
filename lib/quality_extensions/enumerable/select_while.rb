@@ -1,3 +1,5 @@
+# Obsoleted by take_while, drop_while
+
 #--
 # Author::    Tyler Rick
 # Copyright:: Copyright (c) 2007 QualitySmith, Inc.
